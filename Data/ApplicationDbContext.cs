@@ -24,7 +24,7 @@ public class ApplicationDbContext(DbContextOptions options) : DbContext(options)
     {
         base.OnModelCreating(modelBuilder);
 
-        HistoryDateSeeders.Seed(modelBuilder);
+        // HistoryDateSeeders.Seed(modelBuilder);
         PatientSeeders.Seed(modelBuilder);
 
         modelBuilder.Entity<Doctor>()

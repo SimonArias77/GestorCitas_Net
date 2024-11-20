@@ -1,6 +1,8 @@
 using System.Text;
 using Assessment2.Config;
 using Assessment2.Data;
+using Assessment2.Repositories;
+using Assessment2.Services;
 using DotNetEnv;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +31,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 
 builder.Configuration.AddEnvironmentVariables();
+
+// ACÁ AGREGAMOS EL SERVICIO QUE NOS PERMITE TRABAJAR CON LOS MODELOS
+builder.Services.AddScoped<IAdministratorRepository, AdministratorServices>();
+builder.Services.AddScoped<IAppointmentRepository, AppointmentServices>();
+builder.Services.AddScoped<IAvailabilityRepository, AvailabilityServices>();
+builder.Services.AddScoped<IDoctorRepository, DoctorServices>();
+builder.Services.AddScoped<IHistoryDateRepository, HistoryDateServices>();
+builder.Services.AddScoped<IPatientRepository, PatientServices>();
 
 // Add service to work with the Models
 

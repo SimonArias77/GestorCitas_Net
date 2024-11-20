@@ -10,9 +10,10 @@ public interface IAdministratorRepository
 {
     Task<IEnumerable<Administrator>> GetAll();
     Task<Administrator> GetById(int id);
+    Task<Administrator> GetByEmail(string? email);
     Task Add(Administrator administrator);
     Task Update(Administrator administrator);
     Task Delete(int id);
     Task<bool> CheckExistence(int id);
-    Task<Administrator> GetByEmail(string? email);
+    
 }

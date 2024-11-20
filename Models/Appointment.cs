@@ -29,12 +29,10 @@ public class Appointment
     public required Patient Patient { get; set; }
 
     [ForeignKey("doctor_id")]
-    public required Doctor Doctor { get; set; }
-
-   
+    public required Doctor Doctor { get; set; }   
 
     [Column("reason")]
-    [MaxLength(10)]
+    [MaxLength(255)]
     [Required]
-    public string? Reason { get; internal set; }
+    public string? Reason { get; set; }
 }

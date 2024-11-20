@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assessment2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241120061353_FixAppointmentDateMapping")]
-    partial class FixAppointmentDateMapping
+    [Migration("20241120130509_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,18 +63,14 @@ namespace Assessment2.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("AppointmentDate")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("date_time2");
-
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("date_time");
 
                     b.Property<string>("Reason")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("varchar(10)")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)")
                         .HasColumnName("reason");
 
                     b.Property<string>("Status")
@@ -190,29 +186,6 @@ namespace Assessment2.Migrations
                     b.HasIndex("AppointmentId");
 
                     b.ToTable("HistoryDates");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AppointmentId = 1,
-                            DateTime = new DateTime(2024, 10, 15, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            Reason = "Consulta inicial por dolores de cabeza frecuentes"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AppointmentId = 2,
-                            DateTime = new DateTime(2024, 10, 18, 11, 30, 0, 0, DateTimeKind.Unspecified),
-                            Reason = "Revisión de resultados de análisis de sangre"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AppointmentId = 3,
-                            DateTime = new DateTime(2024, 10, 20, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            Reason = "Seguimiento de tratamiento para hipertensión"
-                        });
                 });
 
             modelBuilder.Entity("Assessment2.Models.Patient", b =>
@@ -261,45 +234,45 @@ namespace Assessment2.Migrations
                         {
                             Id = 1,
                             DateBorn = new DateTime(1985, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "juan.perez@example.com",
+                            Email = "luis.perez@example.com",
                             LastName = "Pérez",
-                            Name = "Juan",
+                            Name = "Luis",
                             PhoneNumber = "1234567890"
                         },
                         new
                         {
                             Id = 2,
                             DateBorn = new DateTime(1990, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "maria.garcia@example.com",
+                            Email = "antonia.garcia@example.com",
                             LastName = "García",
-                            Name = "María",
+                            Name = "Antonia",
                             PhoneNumber = "9876543210"
                         },
                         new
                         {
                             Id = 3,
                             DateBorn = new DateTime(1978, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "carlos.lopez@example.com",
+                            Email = "arturo.lopez@example.com",
                             LastName = "López",
-                            Name = "Carlos",
+                            Name = "Arturo",
                             PhoneNumber = "4567891230"
                         },
                         new
                         {
                             Id = 4,
                             DateBorn = new DateTime(1995, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "ana.martinez@example.com",
+                            Email = "maria.martinez@example.com",
                             LastName = "Martínez",
-                            Name = "Ana",
+                            Name = "Maria",
                             PhoneNumber = "3216549870"
                         },
                         new
                         {
                             Id = 5,
                             DateBorn = new DateTime(1982, 11, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "luis.rodriguez@example.com",
+                            Email = "guillo.rodriguez@example.com",
                             LastName = "Rodríguez",
-                            Name = "Luis",
+                            Name = "Guillo",
                             PhoneNumber = "7890123456"
                         });
                 });

@@ -40,9 +40,9 @@ namespace Assessment2.Services
             return await _context.Administrators.ToListAsync();
         }
 
-        public Task<Administrator> GetByEmail(string? email)
+        public async Task<Administrator> GetByEmail(string? email)
         {
-            throw new NotImplementedException();
+           return await _context.Administrators.FindAsync(email);
         }
 
         public async Task<Administrator> GetById(int id)
